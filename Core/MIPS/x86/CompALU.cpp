@@ -482,7 +482,7 @@ namespace MIPSComp
 					cc = SwapCCFlag(cc);
 				} else if (!gpr.R(lhs).CanDoOpWith(gpr.R(rhs))) {
 					// Let's try to pick which makes more sense to load.
-					if (MIPSAnalyst::IsRegisterUsed(rhs, js.compilerPC + 4, 3)) {
+					if (irblock.IsRegisterUsed(rhs, js.irBlockPos + 1, 3)) {
 						std::swap(lhs, rhs);
 						cc = SwapCCFlag(cc);
 					}
@@ -522,7 +522,7 @@ namespace MIPSComp
 					cc = SwapCCFlag(cc);
 				} else if (!gpr.R(lhs).CanDoOpWith(gpr.R(rhs))) {
 					// Let's try to pick which makes more sense to load.
-					if (MIPSAnalyst::IsRegisterUsed(rhs, js.compilerPC + 4, 3)) {
+					if (irblock.IsRegisterUsed(rhs, js.irBlockPos + 1, 3)) {
 						std::swap(lhs, rhs);
 						cc = SwapCCFlag(cc);
 					}

@@ -77,9 +77,6 @@ namespace MIPSAnalyst
 
 	AnalysisResults Analyze(u32 address);
 
-	// This tells us if the reg is used within intrs of addr (also includes likely delay slots.)
-	bool IsRegisterUsed(MIPSGPReg reg, u32 addr, int instrs);
-
 	struct AnalyzedFunction {
 		u32 start;
 		u32 end;

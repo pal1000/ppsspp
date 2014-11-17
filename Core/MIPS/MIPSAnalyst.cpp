@@ -614,7 +614,7 @@ namespace MIPSAnalyst {
 		}
 
 		for (u32 addr = address, endAddr = address + MAX_ANALYZE; addr <= endAddr; addr += 4) {
-			MIPSOpcode op = Memory::Read_Instruction(addr, true);
+			MIPSOpcode op = Memory::Read_Opcode_JIT(addr);
 			MIPSInfo info = MIPSGetInfo(op);
 
 			MIPSGPReg rs = MIPS_GET_RS(op);
@@ -677,37 +677,6 @@ namespace MIPSAnalyst {
 				hashToFunction.insert(std::make_pair(f.hash, &f));
 			}
 		}
-	}
-
-	bool IsRegisterUsed(MIPSGPReg reg, u32 addr, int instrs) {
-		u32 end = addr + instrs * sizeof(u32);
-		while (addr < end) {
-			const MIPSOpcode op = Memory::Read_Instruction(addr, true);
-			const MIPSInfo info = MIPSGetInfo(op);
-
-			// Yes, used.
-			if ((info & IN_RS) && (MIPS_GET_RS(op) == reg))
-				return true;
-			if ((info & IN_RT) && (MIPS_GET_RT(op) == reg))
-				return true;
-
-			// Clobbered, so not used.
-			if ((info & OUT_RT) && (MIPS_GET_RT(op) == reg))
-				return false;
-			if ((info & OUT_RD) && (MIPS_GET_RD(op) == reg))
-				return false;
-			if ((info & OUT_RA) && (reg == MIPS_REG_RA))
-				return false;
-
-			// Bail early if we hit a branch (could follow each path for continuing?)
-			if ((info & IS_CONDBRANCH) || (info & IS_JUMP)) {
-				// Still need to check the delay slot (so end after it.)
-				// We'll assume likely are taken.
-				end = addr + 8;
-			}
-			addr += 4;
-		}
-		return false;
 	}
 
 	void HashFunctions() {

@@ -62,7 +62,7 @@ namespace MIPSComp {
 			prefixTFlag(PREFIX_UNKNOWN),
 			prefixDFlag(PREFIX_UNKNOWN) {}
 
-		u32 compilerPC;
+		u32 irBlockPos;
 		u32 blockStart;
 		u32 lastContinuedPC;
 		u32 initialBlockSize;
