@@ -615,8 +615,10 @@ void scalePixel(const Kernel_3x3& ker,
 		__asm__("trap");
 #elif defined(MIPS)
 		__asm__("break 2");
-#else
+#elif defined(_WIN32)
 		__debugbreak(); //__asm int 3;
+#else
+		{}
 #endif
 #endif
 
