@@ -18,6 +18,7 @@
 // https://github.com/hrydgard/ppsspp and http://www.ppsspp.org/.
 
 #include <vector>
+#include <string>
 
 #include "Common/CommonTypes.h"
 
@@ -61,6 +62,7 @@ struct IRBlock {
 
 	// This tells us if the reg is used within intrs of addr (also includes likely delay slots.)
 	bool IsRegisterUsed(MIPSGPReg reg, int pos, int instrs);
+	std::vector<std::string> ToStringVector();
 };
 
 }
