@@ -15,7 +15,9 @@
 // Official git repository and contact information can be found at
 // https://github.com/hrydgard/ppsspp and http://www.ppsspp.org/.
 
+#ifdef _WIN32
 #include <Windows.h>
+#endif
 
 #include "Core/MIPS/IR.h"
 #include "Core/MIPS/MIPSAnalyst.h"
@@ -24,10 +26,16 @@
 #include "Core/MIPS/MIPSDis.h"
 #include "Core/MIPS/MIPSCodeUtils.h"
 #include "Core/MIPS/JitCommon/JitCommon.h"
+#include "Core/HLE/ReplaceTables.h"
 
 namespace MIPSComp {
 
+// Not very elegant..
+//#ifdef ARM
+//void ArmJit::ExtractIR(u32 address, IRBlock *block) {
+//#else
 void Jit::ExtractIR(u32 address, IRBlock *block) {
+//#endif
 	block->entries.clear();
 
 	block->analysis = MIPSAnalyst::Analyze(address);
