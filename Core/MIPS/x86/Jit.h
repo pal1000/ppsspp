@@ -150,8 +150,11 @@ public:
 	void Comp_VCrossQuat(MIPSOpcode op);
 	void Comp_Vsgn(MIPSOpcode op);
 	void Comp_Vocp(MIPSOpcode op);
-
 	void Comp_DoNothing(MIPSOpcode op);
+
+	// Pseudo instructions emitted by the IR extractor
+	void Comp_IR_SaveRA(MIPSOpcode op);
+	void CompPseudoOp(int pseudo, MIPSOpcode op);
 
 	int Replace_fabsf();
 	int Replace_dl_write_matrix();

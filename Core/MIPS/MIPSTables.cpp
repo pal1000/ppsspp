@@ -129,10 +129,10 @@ const MIPSInstruction tableImmediate[64] = // xxxxxx ..... ..... ...............
 	ENCODING(VFPU1),
 	ENCODING(Emu),
 	ENCODING(VFPU3),
-	ENCODING(Spe2),//special2
-	INVALID, //, "jalx", 0, Dis_JumpType, Int_JumpType},
+	ENCODING(Spe2), //special2
 	INVALID,
-	ENCODING(Spe3),//special3
+	INVALID,
+	ENCODING(Spe3), //special3
 	//32
 	INSTR("lb",  &Jit::Comp_ITypeMem, Dis_ITypeMem, Int_ITypeMem, IN_MEM|IN_IMM16|IN_RS_ADDR|OUT_RT|MEMTYPE_BYTE),
 	INSTR("lh",  &Jit::Comp_ITypeMem, Dis_ITypeMem, Int_ITypeMem, IN_MEM|IN_IMM16|IN_RS_ADDR|OUT_RT|MEMTYPE_HWORD),
@@ -155,7 +155,7 @@ const MIPSInstruction tableImmediate[64] = // xxxxxx ..... ..... ...............
 	INSTR("ll", &Jit::Comp_Generic, Dis_Generic, Int_StoreSync, IN_MEM|IN_IMM16|IN_RS_ADDR|OUT_RT|OUT_OTHER|MEMTYPE_WORD),
 	INSTR("lwc1", &Jit::Comp_FPULS, Dis_FPULS, Int_FPULS, IN_MEM|IN_IMM16|IN_RS_ADDR|OUT_OTHER|MEMTYPE_FLOAT),
 	INSTR("lv.s", &Jit::Comp_SV, Dis_SV, Int_SV, IN_MEM|IN_IMM16|IN_RS_ADDR|OUT_OTHER|IS_VFPU|VFPU_NO_PREFIX|MEMTYPE_FLOAT),
-	INVALID, // HIT THIS IN WIPEOUT
+	INVALID,
 	ENCODING(VFPU4Jump),
 	INSTR("lv", &Jit::Comp_SVQ, Dis_SVLRQ, Int_SVQ, IN_MEM|IN_IMM16|IN_RS_ADDR|OUT_OTHER|IS_VFPU|VFPU_NO_PREFIX|MEMTYPE_VQUAD),
 	INSTR("lv.q", &Jit::Comp_SVQ, Dis_SVQ, Int_SVQ, IN_MEM|IN_IMM16|IN_RS_ADDR|OUT_OTHER|IS_VFPU|VFPU_NO_PREFIX|MEMTYPE_VQUAD), //copU
