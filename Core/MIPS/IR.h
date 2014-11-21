@@ -57,12 +57,15 @@ struct IREntry {
 namespace MIPSComp {
 
 struct IRBlock {
+	u32 address;
 	std::vector<IREntry> entries;
 	MIPSAnalyst::AnalysisResults analysis;
 
 	// This tells us if the reg is used within intrs of addr (also includes likely delay slots.)
 	bool IsRegisterUsed(MIPSGPReg reg, int pos, int instrs);
 	std::vector<std::string> ToStringVector();
+	IREntry &AddIREntry(u32 address);
+	void RemoveLast();
 };
 
 }

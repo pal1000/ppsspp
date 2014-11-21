@@ -118,7 +118,7 @@ JitOptions::JitOptions()
 {
 	enableBlocklink = true;
 	immBranches = false;
-	continueBranches = false;
+	continueBranches = true;
 	continueJumps = false;
 	continueMaxInstructions = 300;
 	enableVFPUSIMD = false;
