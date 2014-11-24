@@ -46,6 +46,7 @@
 #define MIPS_GET_FT(op) ((op>>16) & 0x1F)
 #define MIPS_GET_FD(op) ((op>>6 ) & 0x1F)
 
+#define MIPS_GET_IMM16(op) ((op) & 0xFFFF)
 
 namespace MIPSCodeUtils
 {
